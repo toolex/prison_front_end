@@ -7,12 +7,13 @@ const CellComponent = (props) => {
   }
   const cells = props.prisons[0].cells.map((cell) => cell)
 
+
   return(
     <Fragment>
     {cells.map((cell, index) => {
       return (
         <Fragment>
-
+        <h1></h1>
         <h1 key={index} className = 'cellBox'> {cell.id}
           <PrisonerComponent cell={cell}/>
          </h1>

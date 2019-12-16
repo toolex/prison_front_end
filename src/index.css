@@ -11,3 +11,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.cellBox {
+
+  border: 12px inset #1C22A4;
+  border-radius: 0px 40px 0px 0px;
+  padding-top: 2%;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 5%;
+  min-height: 100%;
+  border-left: 120px solid #808080;
+  border-right: 120px solid #808080;
+
+}

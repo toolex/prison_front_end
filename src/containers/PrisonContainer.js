@@ -21,17 +21,31 @@ class PrisonContainer extends Component{
     })
 }
 
+// getCellFromPrisoner(Prisoner){
+//
+// }
+
   handlePrisonerSubmit(submittedPrisoner){
-    const chosenCell = this.state.prisons[0].cells[0]
-    const updatedPrisoners = [...this.state.prisons[0].chosenCell, submittedPrisoner]
-    this.setState({prisons: updatedPrisoners})
+    const currentPrisons = this.state.prisons
+    console.log(submittedPrisoner.cell);
+    console.log(currentPrisons);
+    currentPrisons[0].cells.forEach((cell)=> {
+      console.log(cell.id);
+      if(cell.id === submittedPrisoner.cell){
+        console.log("HI");
+        cell.prisoners.push(submittedPrisoner)
+      }
+    })
+    // currentPrisons[0].cells.getCellFromPrisoner(submittedPrisoner)
+    // const selectedCell = submittedPrisoner.cell
+    console.log(currentPrisons);
+  //  this.setState({prisons: currentPrisons})
   }
 
 
 
 
   render(){
-    console.log(this.state)
     return (
       <Router>
         <Fragment>

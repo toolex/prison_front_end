@@ -21,6 +21,19 @@ class NewPrisoner extends Component{
     const name = this.state.name.trim()
     const gang = this.state.gang.trim()
     const cell = this.state.cell
+
+    this.props.onPrisonerSubmit({
+      name: name,
+      gang: gang,
+      morale: this.state.morale,
+      cell: Number(cell)
+    });
+
+    this.setState({
+      name: '',
+      gang: '',
+      cell: null
+    })
   }
 
   handleNameChange(event){
@@ -45,7 +58,6 @@ class NewPrisoner extends Component{
 render(){
 
 
-console.log(this.props)
   if(this.props.prisons.length === 0){
     return null
   }
@@ -55,7 +67,7 @@ console.log(this.props)
 
     return (
       <Fragment>
-        <form onSubmit={this.props.handleSubmit}>
+        <form id="form1">
           Name: <input type="text"
                        name="name"
                        value={this.state.name}
@@ -74,9 +86,9 @@ console.log(this.props)
             </option>
               {cellList}
           </select>
-
+            <button type="submit" value="Post" onClick={this.handleSubmit}>Submit</button>
         </form>
-        <button type="submit" form="form1" value="Submit">Submit</button>
+
           </Fragment>
           )
 }

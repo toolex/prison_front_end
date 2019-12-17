@@ -3,6 +3,7 @@ import Request from '../helpers/request.js'
 import CellComponent from '../components/CellComponent'
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NewPrisoner from '../components/NewPrisoner'
+import NavBar from '../components/NavBar'
 
 class PrisonContainer extends Component{
   constructor(props) {
@@ -21,35 +22,20 @@ class PrisonContainer extends Component{
     })
 }
 
-// getCellFromPrisoner(Prisoner){
-//
-// }
-
   handlePrisonerSubmit(submittedPrisoner){
     const currentPrisons = this.state.prisons
-    console.log(submittedPrisoner.cell);
-    console.log(currentPrisons);
     currentPrisons[0].cells.forEach((cell)=> {
-      console.log(cell.id);
       if(cell.id === submittedPrisoner.cell){
-        console.log("HI");
         cell.prisoners.push(submittedPrisoner)
       }
     })
-    // currentPrisons[0].cells.getCellFromPrisoner(submittedPrisoner)
-    // const selectedCell = submittedPrisoner.cell
-    console.log(currentPrisons);
-  //  this.setState({prisons: currentPrisons})
   }
-
-
-
 
   render(){
     return (
       <Router>
         <Fragment>
-            <a href="http://localhost:3000/newprisoner" className="formButton">Add Prisoner</a>
+            <NavBar />
             <Switch>
             <Route exact path="/" render={() => <CellComponent prisons={this.state.prisons}/>}/>
             <Route path="/newprisoner" render={() => <NewPrisoner onPrisonerSubmit={this.handlePrisonerSubmit} prisons={this.state.prisons} />} />

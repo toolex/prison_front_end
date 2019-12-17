@@ -1,4 +1,5 @@
 import React, {Component, Fragment} from 'react';
+import Request from '../helpers/request'
 
 class NewPrisoner extends Component{
 
@@ -16,6 +17,13 @@ class NewPrisoner extends Component{
     this.handleCellChange = this.handleCellChange.bind(this);
   }
 
+//   componentDidMount() {
+//   const request = new Request();
+//   request.get('/prisons').then((data) => {
+//     this.setState({prisoner: data})
+//   })
+// }
+
   handleSubmit(event){
     event.preventDefault();
     const name = this.state.name.trim()
@@ -24,8 +32,8 @@ class NewPrisoner extends Component{
 
     this.props.onPrisonerSubmit({
       name: name,
-      gang: gang,
       morale: this.state.morale,
+      gang: gang,
       cell: Number(cell)
     });
 
@@ -34,6 +42,7 @@ class NewPrisoner extends Component{
       gang: '',
       cell: null
     })
+
   }
 
   handleNameChange(event){

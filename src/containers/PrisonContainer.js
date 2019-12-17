@@ -12,15 +12,17 @@ class PrisonContainer extends Component{
       prisons: []
     }
     this.handlePrisonerSubmit = this.handlePrisonerSubmit.bind(this)
+    this.handlePost = this.handlePost.bind(this)
   }
 
-  componentDidMount(){
+
+  handlePost(prisoner){
     const request = new Request()
-    request.get('/prisons')
-    .then((data)=>{
-      this.setState({prisons: data})
+    request.post('/prisoners', prisoner)
+    .then(()=>{
+      window.location = '/prisoners'
     })
-}
+  }
 
   handlePrisonerSubmit(submittedPrisoner){
     const currentPrisons = this.state.prisons

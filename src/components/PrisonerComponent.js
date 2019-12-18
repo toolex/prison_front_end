@@ -15,9 +15,9 @@ const PrisonerComponent = (props)=>{
       return (
         <h3 key={index} className = 'prisonerBox'>
           Prisoner Name: {prisoner.name}
-          <p> Gang: - {prisoner.gang} </p>
-          <p> Morale: - {prisoner.morale} </p>
-          <FeedPrisoner handleFeedPrisoner={this.props.handleFeedPrisoner}/>
+          <p> Gang: {prisoner.gang} </p>
+          <p> Morale: {prisoner.morale} </p>
+          <FeedPrisoner prisoner = {prisoner} handleFeedPrisoner={props.handleFeedPrisoner}/>
          </h3>
       )
     })}

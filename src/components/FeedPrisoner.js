@@ -1,10 +1,10 @@
 import React, {Fragment} from 'react';
-// import PrisonerComponent from './'
+import PrisonerComponent from './PrisonerComponent'
 
 const FeedPrisoner = (props) =>{
 
   return (
-    <button onClick={this.props.handleFeedPrisoner}>Feed {props.Prisoner.name}</button>
+    <button value={props.prisoner.id} onClick={props.handleFeedPrisoner}>Feed {props.prisoner.name}</button>
   )
 
 }

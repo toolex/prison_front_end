@@ -17,6 +17,12 @@ class PrisonContainer extends Component{
     this.handleFeedPrisoner = this.handleFeedPrisoner.bind(this)
   }
 
+  componentDidMount() {
+     const request = new Request();
+     request.get('/prisons').then((data) => {
+       this.setState({prisons: data})
+     })
+   }
 
   handlePost(prisoner){
     const request = new Request()
@@ -35,11 +41,14 @@ class PrisonContainer extends Component{
     })
   }
 
-  handleFeedPrisoner(prisoner, id){
-    this.prisoner.morale = 10
+  handleFeedPrisoner(event){
+    const id = event.target.value
     const request = new Request();
-    request.patch('/prisoners/' + id, prisoner).then(() => {
-      window.location = '/prisoners/' + id
+    request.patch('/api/prisoners/' + id, {morale: 10} )
+    .then((response) => {
+      request.get('/prisons').then((data) => {
+        this.setState({prisons: data})
+      })
     })
   }
 

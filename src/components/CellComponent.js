@@ -15,7 +15,7 @@ const CellComponent = (props) => {
         <Fragment>
         <h1></h1>
         <h1 key={index} className = 'cellBox'> {cell.id}
-          <PrisonerComponent cell={cell} handleFeedPrisoner={this.props.handleFeedPrisoner}/>
+          <PrisonerComponent cell={cell} handleFeedPrisoner={props.handleFeedPrisoner}/>
          </h1>
 
         </Fragment>

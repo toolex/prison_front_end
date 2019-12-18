@@ -77,6 +77,7 @@ render(){
 
     return (
       <Fragment>
+      <br/>
         <form id="form1">
           Name: <input type="text"
                        name="name"
@@ -96,6 +97,8 @@ render(){
             </option>
               {cellList}
           </select>
+          <br>
+          </br>
             <button type="submit" value="Post" onClick={this.handleSubmit}>Submit</button>
         </form>
 

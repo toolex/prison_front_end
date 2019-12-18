@@ -42,6 +42,8 @@ class NewCell extends Component{
 
       return (
         <Fragment>
+        <br>
+        </br>
           <form id="form1">
             Cell Number: <input type="int"
                          name="id"

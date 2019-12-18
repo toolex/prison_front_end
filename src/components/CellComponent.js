@@ -14,10 +14,9 @@ const CellComponent = (props) => {
     {cells.map((cell, index) => {
       return (
         <Fragment>
-        <h1></h1>
-        <h1 key={index} className = 'cellBox'> {cell.id}
+        <h2 key={index} className = 'cellBox'> Cell - {cell.id}
           <PrisonerComponent onPrisonerDelete={props.onPrisonerDelete} prisons={props.prisons} cell={cell}/>
-         </h1>
+         </h2>
          <button type="submit" value={cell.id} onClick={props.onCellDelete}> Delete Cell</button>
 
         </Fragment>

@@ -15,7 +15,7 @@ const CellComponent = (props) => {
         <Fragment>
         <h1></h1>
         <h1 key={index} className = 'cellBox'> {cell.id}
-          <PrisonerComponent cell={cell}/>
+          <PrisonerComponent prisons={props.prisons} cell={cell}/>
          </h1>
 
         </Fragment>

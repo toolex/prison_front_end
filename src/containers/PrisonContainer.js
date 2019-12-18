@@ -4,6 +4,7 @@ import CellComponent from '../components/CellComponent'
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NewPrisoner from '../components/NewPrisoner'
 import NavBar from '../components/NavBar'
+import NewCell from '../components/NewCell'
 
 class PrisonContainer extends Component{
   constructor(props) {
@@ -12,9 +13,16 @@ class PrisonContainer extends Component{
       prisons: []
     }
     this.handlePrisonerSubmit = this.handlePrisonerSubmit.bind(this)
+    this.handleCellSubmit = this.handleCellSubmit.bind(this)
     this.handlePost = this.handlePost.bind(this)
   }
 
+    componentDidMount() {
+    const request = new Request();
+    request.get('/prisons').then((data) => {
+      this.setState({prisons: data})
+    })
+  }
 
   handlePost(prisoner){
     const request = new Request()
@@ -33,6 +41,14 @@ class PrisonContainer extends Component{
     })
   }
 
+  handleCellSubmit(submittedCell){
+    this.state.prisons.forEach((prison)=> {
+      if(prison.id === submittedCell.prison){
+        prison.cells.push(submittedCell)
+      }
+    })
+  }
+
   render(){
     return (
       <Router>
@@ -41,6 +57,7 @@ class PrisonContainer extends Component{
             <Switch>
             <Route exact path="/" render={() => <CellComponent prisons={this.state.prisons}/>}/>
             <Route path="/newprisoner" render={() => <NewPrisoner onPrisonerSubmit={this.handlePrisonerSubmit} prisons={this.state.prisons} />} />
+            <Route path="/newcell" render={() => <NewCell onCellSubmit={this.handleCellSubmit} prisons={this.state.prisons} />} />
           </Switch>
       </Fragment>
     </Router>

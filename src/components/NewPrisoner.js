@@ -9,7 +9,8 @@ class NewPrisoner extends Component{
       name: '',
       gang: '',
       cell: null,
-      morale: 5
+      morale: 5,
+      prisonerToPost: null
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
@@ -17,12 +18,12 @@ class NewPrisoner extends Component{
     this.handleCellChange = this.handleCellChange.bind(this);
   }
 
-//   componentDidMount() {
-//   const request = new Request();
-//   request.get('/prisons').then((data) => {
-//     this.setState({prisoner: data})
-//   })
-// }
+  componentDidMount() {
+  const request = new Request();
+  request.get('/prisons').then((data) => {
+    this.setState({prisonerToPost: data})
+  })
+}
 
   handleSubmit(event){
     event.preventDefault();

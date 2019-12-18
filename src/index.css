@@ -76,7 +76,7 @@ ul#horizontal-list li {
 
 }
 
-button{
+button {
 
   background-color: lightblue;
   padding: 8px 12px;
@@ -122,8 +122,26 @@ input {
   border-radius: 4px;
 }
 
-Link {
+th {
+  background-color: white;
+  padding: 4px 30px;
+  color: white;
+  font-family: Helvetica;
+  font-size: 30px;
+  text-align: center;
+  border: 2px solid white;
+  border-radius: 4px;
+}
 
+.cellNumber {
+  background-color: lightgrey;
+  padding: 4px 30px;
+  color: black;
+  font-family: Helvetica;
+  font-size: 30px;
+  text-align: center;
+  border: 2px solid blue;
+  border-radius: 4px;
 }
 
 select {

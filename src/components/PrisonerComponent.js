@@ -1,4 +1,5 @@
 import React, {Fragment} from 'react';
+import FeedPrisoner from './FeedPrisoner';
 
 const PrisonerComponent = (props)=>{
 
@@ -12,13 +13,17 @@ const PrisonerComponent = (props)=>{
     <Fragment>
     {prisoners.map((prisoner, index)=> {
       return (
-        <Fragment>
-        <h3 key={index} className = 'prisonerBox'> {prisoner.name} - {prisoner.gang} </h3>
-        <button type="submit" value={prisoner.id} onClick={props.onPrisonerDelete}> Delete Prisoner</button>
-        </Fragment>
+        <h3 key={index} className = 'prisonerBox'>
+          Prisoner Name: {prisoner.name}
+          <p> Gang: {prisoner.gang} </p>
+          <p> Morale: {prisoner.morale} </p>
+          <FeedPrisoner prisoner = {prisoner} handleFeedPrisoner={props.handleFeedPrisoner}/>
+          <button type="submit" value={prisoner.id} onClick={props.onPrisonerDelete}> Delete Prisoner</button>
+         </h3>
       )
     })}
     </Fragment>
+
   )
 }
 

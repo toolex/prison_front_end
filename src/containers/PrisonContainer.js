@@ -43,10 +43,9 @@ class PrisonContainer extends Component{
 
   handleCellSubmit(submittedCell){
     this.state.prisons.forEach((prison)=> {
-      if(prison.id === submittedCell.prison){
         prison.cells.push(submittedCell)
       }
-    })
+    )
   }
 
   render(){

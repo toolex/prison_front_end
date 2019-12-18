@@ -6,30 +6,32 @@ class NewCell extends Component{
   constructor(props){
     super(props);
     this.state = {
-      cellNumber: ""
+      id: '',
+      prisoners: []
     }
 
   this.handleSubmit = this.handleSubmit.bind(this);
-  this.handleCellNumberChange = this.handleCellNumberChange.bind(this);
+  this.handleIdChange = this.handleIdChange.bind(this);
 }
 
   handleSubmit(event){
     event.preventDefault();
-    const cellNumber = this.state.cellNumber
+    const id = this.state.id
 
     this.props.onCellSubmit({
-      cellNumber: cellNumber,
+      id: Number(id),
+      prisoners: this.state.prisoners
     });
 
     this.setState({
-      cellNumber: "",
+      id: "",
     })
 
   }
 
-  handleCellNumberChange(event){
+  handleIdChange(event){
     this.setState({
-      cellNumber: event.target.value
+      id: event.target.value
     })
   }
 
@@ -42,9 +44,9 @@ class NewCell extends Component{
         <Fragment>
           <form id="form1">
             Cell Number: <input type="int"
-                         name="cellNumber"
-                         value={this.state.cellNumber}
-                         onChange={this.handleCellNumberChange}
+                         name="id"
+                         value={this.state.id}
+                         onChange={this.handleIdChange}
                   />
             <br/>
               <button type="submit" value="Post" onClick={this.handleSubmit}>Submit</button>

@@ -1,5 +1,6 @@
 import React, {Fragment} from 'react';
 import FeedPrisoner from './FeedPrisoner';
+import MovePrisoner from './MovePrisoner';
 
 const PrisonerComponent = (props)=>{
 
@@ -15,10 +16,16 @@ const PrisonerComponent = (props)=>{
       return (
         <h3 key={index} className = 'prisonerBox'>
           Prisoner Name: {prisoner.name}
-          <p> Gang: {prisoner.gang} </p>
-          <p> Morale: {prisoner.morale} </p>
+          <br/>
+          Gang: {prisoner.gang}
+          <br/>
+          Morale: {prisoner.morale}
+          <br/><br/>
           <FeedPrisoner prisoner = {prisoner} handleFeedPrisoner={props.handleFeedPrisoner}/>
-          <button type="submit" value={prisoner.id} onClick={props.onPrisonerDelete}> Delete Prisoner</button>
+          <br/>
+          <MovePrisoner prisons = {props.prisons} onHandleMovePrisoner={props.onHandleMovePrisoner} />
+          <br/>
+          <button type="submit" value={prisoner.id} onClick={props.onPrisonerDelete}> Delete {prisoner.name}</button>
          </h3>
       )
     })}

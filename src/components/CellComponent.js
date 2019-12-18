@@ -16,7 +16,7 @@ const CellComponent = (props) => {
         <Fragment>
         <h1></h1>
         <h1 key={index} className = 'cellBox'> {cell.id}
-          <PrisonerComponent onPrisonerDelete={props.onPrisonerDelete} prisons={props.prisons} cell={cell}/>
+          <PrisonerComponent onPrisonerDelete={props.onPrisonerDelete} prisons={props.prisons} cell={cell} handleFeedPrisoner={props.handleFeedPrisoner}/>
          </h1>
          <button type="submit" value={cell.id} onClick={props.onCellDelete}> Delete Cell</button>
 

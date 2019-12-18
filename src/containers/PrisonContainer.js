@@ -3,6 +3,7 @@ import Request from '../helpers/request.js'
 import CellComponent from '../components/CellComponent'
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NewPrisoner from '../components/NewPrisoner'
+import FeedPrisoner from '../components/FeedPrisoner'
 import NavBar from '../components/NavBar'
 import NewCell from '../components/NewCell'
 
@@ -17,6 +18,7 @@ class PrisonContainer extends Component{
     this.handlePost = this.handlePost.bind(this)
     this.handleCellDelete = this.handleCellDelete.bind(this)
     this.handlePrisonerDelete = this.handlePrisonerDelete.bind(this)
+    this.handleFeedPrisoner = this.handleFeedPrisoner.bind(this)
   }
 
     componentDidMount() {
@@ -71,6 +73,16 @@ class PrisonContainer extends Component{
       })
       console.log("updatedPrisons is", updatedPrisons);
     this.setState({prisons: updatedPrisons})
+}
+    handleFeedPrisoner(event){
+      const id = event.target.value
+      const request = new Request();
+      request.patch('/api/prisoners/' + id, {morale: 10} )
+      .then((response) => {
+        request.get('/prisons').then((data) => {
+          this.setState({prisons: data})
+        })
+      })
   }
 
   render(){
@@ -79,7 +91,7 @@ class PrisonContainer extends Component{
         <Fragment>
             <NavBar/>
             <Switch>
-            <Route exact path="/" render={() => <CellComponent onPrisonerDelete={this.handlePrisonerDelete} onCellDelete={this.handleCellDelete} prisons={this.state.prisons}/>}/>
+            <Route exact path="/" render={() => <CellComponent handleFeedPrisoner={this.handleFeedPrisoner} onPrisonerDelete={this.handlePrisonerDelete} onCellDelete={this.handleCellDelete} prisons={this.state.prisons}/>}/>
             <Route path="/newprisoner" render={() => <NewPrisoner onPrisonerSubmit={this.handlePrisonerSubmit} prisons={this.state.prisons} />} />
             <Route path="/newcell" render={() => <NewCell onCellSubmit={this.handleCellSubmit} prisons={this.state.prisons} />} />
           </Switch>

@@ -52,7 +52,7 @@ class PrisonContainer extends Component{
     return (
       <Router>
         <Fragment>
-            <NavBar />
+            <NavBar/>
             <Switch>
             <Route exact path="/" render={() => <CellComponent prisons={this.state.prisons}/>}/>
             <Route path="/newprisoner" render={() => <NewPrisoner onPrisonerSubmit={this.handlePrisonerSubmit} prisons={this.state.prisons} />} />

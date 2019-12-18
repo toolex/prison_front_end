@@ -31,3 +31,22 @@ code {
   border: 5px solid #1C6EA4;
 
 }
+
+#menu-outer {
+	height: 100px;
+}
+
+.table {
+	display: table;   /* Allow the centering to work */
+}
+
+ul#horizontal-list {
+	min-width: 1000px;
+	list-style: none;
+	padding: 20px;
+
+	}
+	ul#horizontal-list li {
+		display: inline;
+    margin: 20px;
+	}

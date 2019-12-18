@@ -12,7 +12,10 @@ const PrisonerComponent = (props)=>{
     <Fragment>
     {prisoners.map((prisoner, index)=> {
       return (
+        <Fragment>
         <h3 key={index} className = 'prisonerBox'> {prisoner.name} - {prisoner.gang} </h3>
+        <button type="submit" value={prisoner.id} onClick={props.onPrisonerDelete}> Delete Prisoner</button>
+        </Fragment>
       )
     })}
     </Fragment>

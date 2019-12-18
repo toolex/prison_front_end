@@ -15,6 +15,8 @@ class PrisonContainer extends Component{
     this.handlePrisonerSubmit = this.handlePrisonerSubmit.bind(this)
     this.handleCellSubmit = this.handleCellSubmit.bind(this)
     this.handlePost = this.handlePost.bind(this)
+    this.handleCellDelete = this.handleCellDelete.bind(this)
+    this.handlePrisonerDelete = this.handlePrisonerDelete.bind(this)
   }
 
     componentDidMount() {
@@ -48,13 +50,36 @@ class PrisonContainer extends Component{
     )
   }
 
+  handleCellDelete(event){
+    const updatedPrisons = this.state.prisons.map((prison)=> {
+        prison.cells = prison.cells.filter(cell => {
+          return cell.id !== parseInt(event.target.value)
+        })
+        return prison
+      })
+    this.setState({prisons: updatedPrisons})
+  }
+
+  handlePrisonerDelete(event){
+    const updatedPrisons = this.state.prisons.map((prison)=> {
+      prison.cells.map(cell => {
+        cell.prisoners = cell.prisoners.filter(prisoner => {
+              return prisoner.id !== parseInt(event.target.value)
+            })
+      })
+        return prison
+      })
+      console.log("updatedPrisons is", updatedPrisons);
+    this.setState({prisons: updatedPrisons})
+  }
+
   render(){
     return (
       <Router>
         <Fragment>
             <NavBar/>
             <Switch>
-            <Route exact path="/" render={() => <CellComponent prisons={this.state.prisons}/>}/>
+            <Route exact path="/" render={() => <CellComponent onPrisonerDelete={this.handlePrisonerDelete} onCellDelete={this.handleCellDelete} prisons={this.state.prisons}/>}/>
             <Route path="/newprisoner" render={() => <NewPrisoner onPrisonerSubmit={this.handlePrisonerSubmit} prisons={this.state.prisons} />} />
             <Route path="/newcell" render={() => <NewCell onCellSubmit={this.handleCellSubmit} prisons={this.state.prisons} />} />
           </Switch>

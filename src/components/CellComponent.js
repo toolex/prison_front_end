@@ -5,6 +5,7 @@ const CellComponent = (props) => {
   if(props.prisons.length === 0){
     return (<p>Loading...</p>)
   }
+  console.log("cell component has cells?", props.prisons[0]);
   const cells = props.prisons[0].cells.map((cell) => cell)
 
 
@@ -15,8 +16,9 @@ const CellComponent = (props) => {
         <Fragment>
         <h1></h1>
         <h1 key={index} className = 'cellBox'> {cell.id}
-          <PrisonerComponent prisons={props.prisons} cell={cell}/>
+          <PrisonerComponent onPrisonerDelete={props.onPrisonerDelete} prisons={props.prisons} cell={cell}/>
          </h1>
+         <button type="submit" value={cell.id} onClick={props.onCellDelete}> Delete Cell</button>
 
         </Fragment>
 

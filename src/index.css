@@ -16,11 +16,11 @@ code {
 
   border: 70px inset #1C22A4;
   border-radius: 40px 40px 40px 40px;
-  padding-top: 3%;
+  padding-top: 0%;
   padding-left: 5%;
   padding-right: 5%;
-  padding-bottom: 3%;
-  min-height: 500%;
+  padding-bottom: 0%;
+  /* max-height: 50%; */
   border-left: 150px solid #808080;
   border-right: 150px solid #808080;
 
@@ -36,7 +36,7 @@ code {
   padding: 8px 12px;
   color: blue;
   font-family: Helvetica;
-  font-size: 18px;
+  font-size: 16px;
   border: 5px solid blue;
   border-radius: 4px;
   margin-left: auto;
@@ -46,6 +46,23 @@ code {
 #menu-outer {
   height: 60px;
 
+}
+
+.header{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around;
+  align-items: stretch;
+  text-align:center;
+  background-color: darkorange;
+  padding: 8px 12px;
+  color: blue;
+  font-family: Helvetica;
+  font-size: 40px;
+  border: 5px solid blue;
+  border-radius: 4px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .table {
@@ -87,7 +104,7 @@ button {
   color: blue;
   cursor:pointer;
   font-family: Helvetica;
-  font-size: 20px;
+  font-size: 18px;
   border: 2px solid blue;
   border-radius: 4px;
 }
@@ -97,7 +114,7 @@ h1 {
   flex-direction: row;
   justify-content: center;
   align-items: stretch;
-  background-color: lightblue;
+  background-color: silver;
   padding: 6px 30px;
   color: black;
   font-family: Helvetica;
@@ -138,11 +155,11 @@ th {
 }
 
 .cellNumber {
-  background-color: lightgrey;
+  background-color: darkorange;
   padding: 4px 30px;
-  color: black;
+  color: blue;
   font-family: Helvetica;
-  font-size: 30px;
+  font-size: 40px;
   text-align: center;
   border: 2px solid blue;
   border-radius: 4px;
@@ -153,7 +170,7 @@ select {
   padding: 6px 30px;
   color: black;
   font-family: Helvetica;
-  font-size: 20px;
+  font-size: 18px;
   text-align: center;
   border: 2px solid blue;
   border-radius: 4px;

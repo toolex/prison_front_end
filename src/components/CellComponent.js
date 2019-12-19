@@ -5,7 +5,7 @@ const CellComponent = (props) => {
   if(props.prisons.length === 0){
     return (<p>Loading...</p>)
   }
-  console.log("cell component has cells?", props.prisons[0]);
+
   const cells = props.prisons[0].cells.map((cell) => cell)
 
 

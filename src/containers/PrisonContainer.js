@@ -16,7 +16,6 @@ class PrisonContainer extends Component{
     this.handleCellSubmit = this.handleCellSubmit.bind(this)
     this.handleCellDelete = this.handleCellDelete.bind(this)
     this.handlePrisonerDelete = this.handlePrisonerDelete.bind(this)
-    this.handleMovePrisoner = this.handleMovePrisoner.bind(this)
   }
 
     componentDidMount() {

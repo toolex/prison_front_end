@@ -35,7 +35,7 @@ class NewPrisoner extends Component{
       name: name,
       morale: this.state.morale,
       gang: gang,
-      cell: {id:2}
+      cell: cell
     });
 
     this.setState({
@@ -60,7 +60,7 @@ class NewPrisoner extends Component{
 
   handleCellChange(event){
     this.setState({
-      cell: event.target.value
+      cell: {id: parseInt(event.target.value)}
     })
   }
 
@@ -73,7 +73,7 @@ render(){
     return null
   }
   const cellList = this.props.prisons[0].cells.map((cell, index) => {
-    return <option key={index}>{cell.id}</option>
+    return <option value={cell.id} key={index}>{cell.id}</option>
   })
 
     return (
@@ -92,7 +92,7 @@ render(){
                         onChange={this.handleGangChange}
                         />
           <br/>
-          Cell :<select value={this.state.cell} onChange={this.handleCellChange}>
+          Cell :<select onChange={this.handleCellChange}>
             <option disabled selected>
             Cells
             </option>

@@ -25,7 +25,7 @@ const PrisonerComponent = (props)=>{
           <br/>
           <MovePrisoner prisons = {props.prisons} onHandleMovePrisoner={props.onHandleMovePrisoner} />
           <br/>
-          <button type="submit" value={prisoner.id} onClick={props.onPrisonerDelete}> Delete {prisoner.name}</button>
+          <button type="submit" value={prisoner.id} onClick={props.onPrisonerDelete}> Remove {prisoner.name}</button>
          </h3>
       )
     })}

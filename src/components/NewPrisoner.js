@@ -8,7 +8,7 @@ class NewPrisoner extends Component{
     this.state = {
       name: '',
       gang: '',
-      cell: null,
+      cell: {id: null},
       morale: 5,
       prisonerToPost: null
     }
@@ -35,13 +35,13 @@ class NewPrisoner extends Component{
       name: name,
       morale: this.state.morale,
       gang: gang,
-      cell: Number(cell)
+      cell: {id:2}
     });
 
     this.setState({
       name: '',
       gang: '',
-      cell: null
+      cell: null,
     })
 
   }
@@ -63,6 +63,7 @@ class NewPrisoner extends Component{
       cell: event.target.value
     })
   }
+
 
 
 render(){

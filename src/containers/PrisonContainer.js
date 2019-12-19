@@ -14,7 +14,6 @@ class PrisonContainer extends Component{
     }
     this.handlePrisonerSubmit = this.handlePrisonerSubmit.bind(this)
     this.handleCellSubmit = this.handleCellSubmit.bind(this)
-    this.handlePost = this.handlePost.bind(this)
     this.handleCellDelete = this.handleCellDelete.bind(this)
     this.handlePrisonerDelete = this.handlePrisonerDelete.bind(this)
     this.handleMovePrisoner = this.handleMovePrisoner.bind(this)
@@ -27,22 +26,36 @@ class PrisonContainer extends Component{
     })
   }
 
-  handlePost(prisoner){
+  handleSubmit(prisoner){
     const request = new Request()
-    request.post('/prisoners', prisoner)
+    request.post('/api/prisoners', prisoner)
     .then(()=>{
-      window.location = '/prisoners'
+      window.location = '/api/prisoners'
     })
   }
 
-  handlePrisonerSubmit(submittedPrisoner){
-    const currentPrisons = this.state.prisons
-    currentPrisons[0].cells.forEach((cell)=> {
-      if(cell.id === submittedPrisoner.cell){
-        cell.prisoners.push(submittedPrisoner)
-      }
-    })
-  }
+//   handlePrisonerSubmit(submittedPrisoner){
+//   const currentPrisons = this.state.prisons
+//   currentPrisons[0].cells.forEach((cell)=> {
+//     if(cell.id === submittedPrisoner.cell){
+//       cell.prisoners.push(submittedPrisoner)
+//     }
+//   })
+//   postPrisoner(submittedPrisoner);
+// }
+
+handlePrisonerSubmit(submittedPrisoner){
+  console.log(submittedPrisoner)
+  const request = new Request();
+  request.post('/prisoners', submittedPrisoner)
+  .then((response) => {
+    request.get('/prisons').then((data) => {
+      this.setState({prisons: data})
+}
+)}
+)}
+
+
 
   handleCellSubmit(submittedCell){
     this.state.prisons.forEach((prison)=> {
@@ -51,30 +64,38 @@ class PrisonContainer extends Component{
     )
   }
 
+
   handleCellDelete(event){
-    const updatedPrisons = this.state.prisons.map((prison)=> {
-        prison.cells = prison.cells.filter(cell => {
-          return cell.id !== parseInt(event.target.value)
-        })
-        return prison
-      })
-    this.setState({prisons: updatedPrisons})
-  }
-
-
-  handlePrisonerDelete(event){
     const id = event.target.value
     const request = new Request();
-    request.delete('/api/prisoners/' + id)
+    request.delete('/api/cells/' + id)
     .then((response) => {
       request.get('/prisons').then((data) => {
         this.setState({prisons: data})
       })
+    })
+  }
+
+handlePrisonerDelete(event){
+  const id = event.target.value
+  const request = new Request();
+  request.delete('/api/prisoners/' + id)
+  .then((response) => {
+    request.get('/prisons').then((data) => {
+      this.setState({prisons: data})
+    })
   })
 }
 
-  handleMovePrisoner(event){
-
+    handleFeedPrisoner(event){
+      const id = event.target.value
+      const request = new Request();
+      request.patch('/api/prisoners/' + id, {morale: 10} )
+      .then((response) => {
+        request.get('/prisons').then((data) => {
+          this.setState({prisons: data})
+        })
+      })
   }
 
   render(){

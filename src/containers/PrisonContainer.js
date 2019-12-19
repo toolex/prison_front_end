@@ -16,6 +16,7 @@ class PrisonContainer extends Component{
     this.handleCellSubmit = this.handleCellSubmit.bind(this)
     this.handleCellDelete = this.handleCellDelete.bind(this)
     this.handlePrisonerDelete = this.handlePrisonerDelete.bind(this)
+    this.handleFeedPrisoner = this.handleFeedPrisoner.bind(this)
   }
 
     componentDidMount() {
@@ -103,7 +104,7 @@ handlePrisonerDelete(event){
         <Fragment>
             <NavBar/>
             <Switch>
-            <Route exact path="/" render={() => <CellComponent onHandleMovePrisoner={this.handleMovePrisoner} onPrisonerDelete={this.handlePrisonerDelete} onCellDelete={this.handleCellDelete} prisons={this.state.prisons}/>}/>
+            <Route exact path="/" render={() => <CellComponent handleFeedPrisoner={this.handleFeedPrisoner} onPrisonerDelete={this.handlePrisonerDelete} onCellDelete={this.handleCellDelete} prisons={this.state.prisons}/>}/>
             <Route path="/newprisoner" render={() => <NewPrisoner onPrisonerSubmit={this.handlePrisonerSubmit} prisons={this.state.prisons} />} />
             <Route path="/newcell" render={() => <NewCell onCellSubmit={this.handleCellSubmit} prisons={this.state.prisons} />} />
           </Switch>
